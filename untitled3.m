@@ -393,6 +393,8 @@ if xtype==4
     x_1=A*sawtooth(2*pi*F*t,0.5);
 end
 plot(handles.axes1,t(1:N/10),x(1:N/10))
+grid(handles.axes1,"on")
+grid(handles.axes1,'minor')
 plot_right(hObject, eventdata, handles,x_1,Fs,N)
 p=p+10
 
