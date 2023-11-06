@@ -22,7 +22,7 @@ function varargout = untitled3(varargin)
 
 % Edit the above text to modify the response to help untitled3
 
-% Last Modified by GUIDE v2.5 06-Nov-2023 12:23:39
+% Last Modified by GUIDE v2.5 06-Nov-2023 23:27:52
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -105,6 +105,8 @@ my_callback_fun(hObject, eventdata, handles);
 
 % --- Executes on button press in pushbutton7.
 function pushbutton7_Callback(hObject, eventdata, handles)
+global stype;
+stype=0
 % hObject    handle to pushbutton7 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
@@ -447,7 +449,8 @@ function figure1_CloseRequestFcn(hObject, eventdata, handles)
 % hObject    handle to figure1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+global stype
+stype=0;
 delete(handles.ht);
 % Hint: delete(hObject) closes the figure
 delete(hObject);
-
