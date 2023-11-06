@@ -22,7 +22,7 @@ function varargout = untitled3(varargin)
 
 % Edit the above text to modify the response to help untitled3
 
-% Last Modified by GUIDE v2.5 04-Nov-2023 22:49:33
+% Last Modified by GUIDE v2.5 06-Nov-2023 12:23:39
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -125,6 +125,21 @@ function pushbutton9_Callback(hObject, eventdata, handles)
 global xtype;
 xtype=4;
 my_callback_fun(hObject, eventdata, handles);
+
+
+
+
+
+% --- Executes on button press in pushbutton11.
+function pushbutton11_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton11 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+global stype;
+stype=1;
+
+
+
 
 
 function edit1_Callback(hObject, eventdata, handles)
@@ -369,6 +384,7 @@ end
 function my_callback_fun(hObject, eventdata, handles)
 global xtype;
 global p
+global stype;
 Fs=10000;
 N=10000;
 dt=1/Fs;
@@ -395,6 +411,9 @@ end
 plot(handles.axes1,t(1:N/10),x(1:N/10))
 grid(handles.axes1,"on")
 grid(handles.axes1,'minor')
+if stype==1
+    sound(x_1,Fs)
+end
 plot_right(hObject, eventdata, handles,x_1,Fs,N)
 p=p+10
 
@@ -431,3 +450,4 @@ function figure1_CloseRequestFcn(hObject, eventdata, handles)
 delete(handles.ht);
 % Hint: delete(hObject) closes the figure
 delete(hObject);
+
