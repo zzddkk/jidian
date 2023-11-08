@@ -22,7 +22,7 @@ function varargout = untitled3(varargin)
 
 % Edit the above text to modify the response to help untitled3
 
-% Last Modified by GUIDE v2.5 06-Nov-2023 23:27:52
+% Last Modified by GUIDE v2.5 08-Nov-2023 20:31:41
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -139,6 +139,7 @@ function pushbutton11_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 global stype;
 stype=1;
+my_sound(hObject, eventdata, handles,stype)
 
 
 
@@ -387,6 +388,8 @@ function my_callback_fun(hObject, eventdata, handles)
 global xtype;
 global p
 global stype;
+global x_1
+global Fs
 Fs=10000;
 N=10000;
 dt=1/Fs;
@@ -404,20 +407,19 @@ if xtype==2
 end
 if xtype==3
     x=A*square(2*pi*F*t+p*pi/180,50);
-    x_1=A*square(2*pi*F*t+p*pi/180,50);
+    x_1=A*square(2*pi*F*t,50);
 end
 if xtype==4
     x=A*sawtooth(2*pi*F*t+p*pi/180,0.5);
     x_1=A*sawtooth(2*pi*F*t,0.5);
 end
 plot(handles.axes1,t(1:N/10),x(1:N/10))
+set(handles.axes1,'Ylim',[-2000,2000]);
+set(handles.axes1,'Xlim',[0,0.05]);
 grid(handles.axes1,"on")
 grid(handles.axes1,'minor')
-if stype==1
-    sound(x_1,Fs)
-end
 plot_right(hObject, eventdata, handles,x_1,Fs,N)
-p=p+10
+p=p+10;
 
 
 
@@ -444,6 +446,22 @@ set(handles.edit10,'String',s10)
 fstd=std(x(1:Fs/frequency));
 s11=sprintf('%f',fstd);
 set(handles.edit11,'String',s11)
+
+
+function my_sound(hObject, eventdata, handles,stype)
+global x_1
+global Fs
+A=get(handles.slider2,'value');
+if stype==1
+    sound(x_1/1000,Fs);
+end
+stype=0;
+
+
+
+
+
+
 % --- Executes when user attempts to close figure1.
 function figure1_CloseRequestFcn(hObject, eventdata, handles)
 % hObject    handle to figure1 (see GCBO)

@@ -1,0 +1,9 @@
+untitled1.m是信号发生器
+untitled2.m是作业求var，mean，rms等
+untitled3.m是作业电子钢琴
+fig文件不是程序
+程序是.m文件点击运行就可以
+如果打开了fig文件
+就关不了了,唯一的关闭方法是任务管理器,结束任务
+untitled2有三个图，最后两个一个是频谱图，一个是相谱图
+其中由于matalb自身基于cos函数所以对于sin函数的初相位都pi/2的差
